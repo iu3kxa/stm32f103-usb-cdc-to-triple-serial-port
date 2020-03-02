@@ -11,10 +11,12 @@ USART2
 USART3
 Mode: Asynchronous
 tested up to 57600 baud without errors.
+At 115200 in tx-rx loop sending larg chunk of data result in data loss; i will thank if you konow and point out the problem.
 
 Pin configuration
 USB_DM: PA11
 USB_PM: PA12 must have a 1.5k pullup resistor to 3.3v
+Disconnection is done by setting PA12 to output and pulling PA12 down for approx. 2 seconds.
 
 USART1_TX: PA9
 USART1_RX: PA10
