@@ -10,8 +10,8 @@ USB Device with 6+1 endpoints (default , 3 in, 3 out, 3 control) , see usbdesc.c
 USART1 shown as "stm32f103 vcp serial port 3" on windows device manager  
 USART2 shown as "stm32f103 vcp serial port 1" on windows device manager  
 USART3 shown as "stm32f103 vcp serial port 2" on windows device manager  
-tested up to 57600 baud without errors.  
-At 115200 in tx-rx loop sending larg chunk of data result in data loss; i will thank if you konow and point out the problem.  
+Tested up to 57600 baud without errors.  
+At 115200 in tx-rx loop sending larg chunk of data result in data loss; i will thank if know know and point out the problem.  
 
 Pin configuration  
 USB_DM: PA11  
