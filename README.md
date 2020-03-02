@@ -1,11 +1,11 @@
 # stm32f103_triple_vcp
-An example to show how to use dual CDC VCP USB interfaces. 
+An example to show how to use triple CDC VCP USB interfaces. 
 ## Hardware configuration
-MCU: STM32F103C6Tx(72MHz, LQFP48, 32KB Flash, 10KB RAM)
+MCU: STM32F103C6T6 running at 72MHz
 
 Compiled with Keil uVision
 Using High Speed Clock (HSE): 8Mhz Crystal/Ceramic Resonator
-USB Device (FS)
+USB Device with 6+1 endpoints ( 1default 6in 6out 6control)
 USART1
 USART2
 USART3
