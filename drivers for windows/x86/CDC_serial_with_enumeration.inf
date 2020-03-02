@@ -1,0 +1,80 @@
+;------------------------------------------------------------------------------
+; STMicroelectronics Comunication Device Class driver (CDC) INF FILE
+; (C)2010 Copyright STMicroelectronics
+;------------------------------------------------------------------------------
+
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4d36e978-e325-11ce-bfc1-08002be10318} 
+Provider=%MYCORP%
+LayoutFile=layout.inf
+CatalogFile=CDC_serial_with_enumeration.cat
+DriverVer=04/25/2010,1.3.1
+
+[Manufacturer]
+%MYCORP%=MYCORP
+
+[MYCORP]
+%ST32F%= ST32F4,NT,USB\VID_FF02&PID_0004
+%ST32F%= ST32F4,NT,USB\VID_FF02&PID_0004&REV_0200
+%ST32F1%= ST32F4,NT,USB\VID_FF02&PID_0004&MI_00
+%ST32F2%= ST32F4,NT,USB\VID_FF02&PID_0004&MI_02
+%ST32F3%= ST32F4,NT,USB\VID_FF02&PID_0004&MI_04
+%ST32F1%= ST32F4,NT,USB\VID_FF02&PID_0004&REV_0200&MI_00
+%ST32F2%= ST32F4,NT,USB\VID_FF02&PID_0004&REV_0200&MI_02
+%ST32F3%= ST32F4,NT,USB\VID_FF02&PID_0004&REV_0200&MI_04
+
+[DestinationDirs] 
+FakeModemCopyFileSection=12
+DefaultDestDir = 12
+
+[ST32F4.NT]
+include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=ST32F4.NT.AddReg
+
+[ST32F4.NT.HW]
+AddReg=ST32F4.NT.HW.AddReg
+
+[ST32F4.NT.AddReg]
+HKR,,NTMPDriver,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+HKR,,PortSubClass,1,01
+
+[ST32F4.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+
+;-------------- Service installation
+; Port Driver (function driver for this device)
+[ST32F4.NT.Services]
+AddService = usbser, 0x00000002, Service_Inst
+AddService = Serenum,,Serenum_Service_Inst
+
+; -------------- Serial Port Driver install sections
+[Service_Inst]
+DisplayName = %Serial.SvcDesc%
+ServiceType = 1 ; SERVICE_KERNEL_DRIVER
+StartType = 3 ; SERVICE_DEMAND_START
+ErrorControl = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\usbser.sys
+LoadOrderGroup = Base
+
+; -------------- Serenum Driver install section
+[Serenum_Service_Inst]
+DisplayName    = %Serenum.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+[Strings] 
+MYCORP = "modified by iu3kxa@gmail.com"		     ; Your company name
+ST32F = "stm32f103 vcp serial control"		             ; Device description
+ST32F1 = "stm32f103 vcp serial port 1"		             ; Device description
+ST32F2 = "stm32f103 vcp serial port 2"		             ; Device description
+ST32F3 = "stm32f103 vcp serial port 3"		             ; Device description
+Serial.SvcDesc = "Generic CDC com"	     ; Device driver description
+Serenum.SVCDESC = "Serenum Filter Driver"
