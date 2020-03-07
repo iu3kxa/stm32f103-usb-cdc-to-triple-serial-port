@@ -3,7 +3,7 @@ An example to show how to use triple CDC VCP USB interfaces.
 ## Hardware configuration
 MCU: STM32F103C8T6 running at 72MHz
 
-Compiled with mdk
+Compiled with mdk  
 Using High Speed Clock (HSE): 8Mhz Crystal/Ceramic Resonator  
 USB Device with 6+1 endpoints (default , 3 in, 3 out, 3 control) , see usbdesc.c  
 
