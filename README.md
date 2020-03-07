@@ -7,7 +7,7 @@ Compiled with mdk
 Using High Speed Clock (HSE): 8Mhz Crystal/Ceramic Resonator  
 USB Device with 6+1 endpoints (default , 3 in, 3 out, 3 control) , see usbdesc.c  
 
-include a personal certificate and signed inf, tested on windows 7 and windows 10 without unsigned driver warning. 
+include a personal certificate and signed inf, tested on windows 7 and windows 10 without unsigned driver warning.  
 where  
 USART1 shown as "stm32f103 vcp serial port 3" on windows device manager  
 USART2 shown as "stm32f103 vcp serial port 1" on windows device manager  
