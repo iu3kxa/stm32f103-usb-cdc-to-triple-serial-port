@@ -1,7 +1,7 @@
 # stm32f103_triple_vcp
 An example to show how to use triple CDC VCP USB interfaces. 
 ## Hardware configuration
-MCU: STM32F103C6T6 running at 72MHz
+MCU: STM32F103C8T6 running at 72MHz
 
 Compiled with Keil uVision  
 Using High Speed Clock (HSE): 8Mhz Crystal/Ceramic Resonator  
